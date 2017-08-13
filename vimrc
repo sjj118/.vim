@@ -1,31 +1,41 @@
 syntax on
 set nowrap
 set autoindent
-set cindent
 set nobackup
 set nu
 set rnu
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
-set makeprg=g++\ -Wl,-stack_size,1024000000\ %\ -o\ %<\ -g
+set expandtab
+au FileType python set textwidth=79
+au Filetype html,js,css set tabstop=2 shiftwidth=2 softtabstop=2
+au Filetype cpp,c set cindent
 func Compile()
-	exec "w"
-	exec "make"
-	exec "cw"
+    exec "w"
+    if &filetype=="cpp"
+        set makeprg=g++\ -Wl,-stack_size,1024000000\ %\ -o\ %<\ -g
+        exec "make"
+        exec "cw"
+    elseif &filetype=="c"
+        set makeprg=gcc\ -Wl,-stack_size,1024000000\ %\ -o\ %<\ -g
+        exec "make"
+        exec "cw"
+    endif
 endfun
 func Run()
-	exec "!./%<"
-endfunc
-func CompRun()
-	call Compile()
-	call Run()
+    if &filetype=="cpp" || &filetype=="c"
+        exec "!./%<"
+    elseif &filetype=="python"
+        exec "!python3 %"
+    endif
 endfunc
 func Debug()
-	exec "!gdb %<"
+    if &filetype=="cpp" || &filetype=="c"
+        exec "!gdb %<"
+    endif
 endfunc
-map <F1> :call Compile()<CR>
-map <F2> :call CompRun()<CR>
+map <F2> :call Compile()<CR>
 map <F3> :call Run()<CR>
 map <F4> :call Debug()<CR>
 vmap "+y y:call system("pbcopy", getreg("\""))<CR>
