@@ -38,5 +38,7 @@ endfunc
 map <F2> :call Compile()<CR>
 map <F3> :call Run()<CR>
 map <F4> :call Debug()<CR>
-vmap "+y y:call system("pbcopy", getreg("\""))<CR>
-nmap "+p :call setreg("\"",system("pbpaste"))<CR>p
+if has('mac')
+    vmap "+y y:call system("pbcopy", getreg("\""))<CR>
+    nmap "+p :call setreg("\"",system("pbpaste"))<CR>p
+endif
