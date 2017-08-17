@@ -1,3 +1,5 @@
+au BufNewFile,BufRead *.ejs set filetype=html
+filetype indent on
 syntax on
 set nowrap
 set autoindent
@@ -8,9 +10,8 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
-au FileType python set textwidth=79
 au Filetype html,js,css set tabstop=2 shiftwidth=2 softtabstop=2
-au Filetype cpp,c set cindent
+au FileType python set textwidth=79
 func Compile()
     exec "w"
     if &filetype=="cpp"
