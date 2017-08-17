@@ -10,7 +10,6 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
-au Filetype html,js,css set tabstop=2 shiftwidth=2 softtabstop=2
 au FileType python set textwidth=79
 func Compile()
     exec "w"
