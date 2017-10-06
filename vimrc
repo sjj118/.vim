@@ -1,8 +1,21 @@
+set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+call vundle#end()
+" :PluginList       - 列出所有已配置的插件
+" :PluginInstall     - 安装插件,追加 `!` 用以更新或使用 :PluginUpdate
+" :PluginSearch foo - 搜索 foo ; 追加 `!` 清除本地缓存
+" :PluginClean      - 清除未使用插件,需要确认; 追加 `!` 自动批准移除未使用插件
+" 查阅 :h vundle 获取更多细节和wiki以及FAQ
+
 au BufNewFile,BufRead *.ejs set filetype=html
-filetype indent on
 syntax on
-set nowrap
+filetype plugin indent on
 set autoindent
+set nowrap
 set nobackup
 set nu
 set rnu
