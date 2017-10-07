@@ -60,3 +60,4 @@ map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
+let g:slimv_swank_cmd = '! xterm -e scheme -i ~/.vim/bundle/slimv/slime/start-swank.lisp &'
