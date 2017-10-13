@@ -1,4 +1,5 @@
 set nocompatible
+let mapleader = "\<Space>"
 
 """ Vundle
 filetype off
@@ -8,10 +9,10 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'https://github.com/kovisoft/slimv.git'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'altercation/vim-colors-solarized'
+"Plugin 'yianwillis/vimcdoc'
 call vundle#end()
 " :PluginList       - 列出所有已配置的插件
 " :PluginInstall     - 安装插件,追加 `!` 用以更新或使用 :PluginUpdate
@@ -35,7 +36,14 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
+set ambiwidth=double
 au FileType python set textwidth=79
+
+set langmenu=zh_CN.UTF-8
+"设置中文提示
+language messages zh_CN.utf-8
+"设置中文帮助
+set helplang=cn
 
 """ compile
 func Compile()
@@ -62,15 +70,16 @@ func Debug()
         exec "!gdb %<"
     endif
 endfunc
-map <C-p> :call Compile()<CR>
-map <C-g> :call Run()<CR>
-map <C-s> :call Debug()<CR>
+map <leader>c :call Compile()<CR>
+map <leader>r :call Run()<CR>
+map <leader>d :call Debug()<CR>
 
 """ NERDTree
-nnoremap <C-n> :NERDTreeTabsToggle<CR>
+nnoremap <leader>n :NERDTreeToggle<CR>
 let NERDTreeShowLineNumbers=1
 let NERDTreeAutoCenter=1
 let NERDTreeWinSize=31
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 """ clipboard
 if !has('clipboard')
@@ -83,3 +92,9 @@ map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
+
+""" vim-airline
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
+"let g:airline#extensions#tabline#buffer_nr_show = 1
