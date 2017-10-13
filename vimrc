@@ -1,4 +1,5 @@
 set nocompatible
+set hidden
 let mapleader = "\<Space>"
 
 """ Vundle
@@ -12,7 +13,7 @@ Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'altercation/vim-colors-solarized'
-"Plugin 'yianwillis/vimcdoc'
+Plugin 'yianwillis/vimcdoc'
 call vundle#end()
 " :PluginList       - 列出所有已配置的插件
 " :PluginInstall     - 安装插件,追加 `!` 用以更新或使用 :PluginUpdate
@@ -70,12 +71,15 @@ func Debug()
         exec "!gdb %<"
     endif
 endfunc
-map <leader>c :call Compile()<CR>
-map <leader>r :call Run()<CR>
-map <leader>d :call Debug()<CR>
+nmap <leader>c :call Compile()<CR>
+nmap <leader>r :call Run()<CR>
+nmap <leader>d :call Debug()<CR>
 
 """ NERDTree
-nnoremap <leader>n :NERDTreeToggle<CR>
+nnoremap <leader>t :NERDTreeToggle<CR>
+nmap <C-n> :bnext<CR>
+nmap <C-p> :bprevious<CR>
+nmap <leader>w :bp <BAR> bd #<CR>
 let NERDTreeShowLineNumbers=1
 let NERDTreeAutoCenter=1
 let NERDTreeWinSize=31
@@ -97,4 +101,3 @@ map <C-l> <C-w>l
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
-"let g:airline#extensions#tabline#buffer_nr_show = 1
