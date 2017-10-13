@@ -8,10 +8,11 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'https://github.com/kovisoft/slimv.git'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
-Bundle 'jistr/vim-nerdtree-tabs'
+Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'altercation/vim-colors-solarized'
 call vundle#end()
 " :PluginList       - 列出所有已配置的插件
 " :PluginInstall     - 安装插件,追加 `!` 用以更新或使用 :PluginUpdate
@@ -20,9 +21,12 @@ call vundle#end()
 " 查阅 :h vundle 获取更多细节和wiki以及FAQ
 
 """ syntax
-au BufNewFile,BufRead *.ejs set filetype=html
 syntax on
+set background=dark
+colorscheme solarized
+
 filetype plugin indent on
+au BufNewFile,BufRead *.ejs set filetype=html
 set autoindent
 set nowrap
 set nobackup
@@ -59,19 +63,18 @@ func Debug()
         exec "!gdb %<"
     endif
 endfunc
-map <F2> :call Compile()<CR>
-map <F3> :call Run()<CR>
-map <F4> :call Debug()<CR>
+map <C-p> :call Compile()<CR>
+map <C-g> :call Run()<CR>
+map <C-s> :call Debug()<CR>
 
-""" NERTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-nnoremap <F1> :NERDTreeTabsToggle<CR>
-autocmd StdinReadPre * let s:std_in=1
-"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTreeTabs | endif
-"autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+""" NERDTree
+nnoremap <C-n> :NERDTreeTabsToggle<CR>
+let NERDTreeShowLineNumbers=1
+let NERDTreeAutoCenter=1
+let NERDTreeWinSize=31
 
 """ rainbow_parentheses
-au VimEnter * RainbowParenthesesToggle
+"au VimEnter * RainbowParenthesesToggle
 "au Syntax * RainbowParenthesesLoadRound
 "au Syntax * RainbowParenthesesLoadSquare
 "au Syntax * RainbowParenthesesLoadBraces
