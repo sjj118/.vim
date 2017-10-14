@@ -25,9 +25,7 @@ call vundle#end()
 """ syntax
 syntax on
 set background=dark
-if filereadable('solarized')
-    colorscheme solarized
-endif
+colorscheme solarized
 
 filetype plugin indent on
 au BufNewFile,BufRead *.ejs set filetype=html
