@@ -1,5 +1,6 @@
 set nocompatible
 set hidden
+set backspace=indent,eol,start
 let mapleader = "\<Space>"
 
 """ Vundle
