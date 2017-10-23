@@ -8,7 +8,7 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'https://github.com/kovisoft/slimv.git'
+"Plugin 'https://github.com/kovisoft/slimv.git'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'vim-airline/vim-airline'
@@ -40,6 +40,7 @@ set softtabstop=4
 set expandtab
 set ambiwidth=double
 au FileType python set textwidth=79
+au FileType scheme set tabstop=2 shiftwidth=2 softtabstop=2
 
 set langmenu=zh_CN.UTF-8
 "设置中文提示
