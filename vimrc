@@ -52,11 +52,11 @@ set helplang=cn
 func Compile()
     exec "w"
     if &filetype=="cpp"
-        set makeprg=g++\ -Wl,-stack_size,1024000000\ %\ -o\ %<\ -g
+        set makeprg=g++\ %\ -o\ %<\ -g
         exec "make"
         exec "cw"
     elseif &filetype=="c"
-        set makeprg=gcc\ -Wl,-stack_size,1024000000\ %\ -o\ %<\ -g
+        set makeprg=gcc\ %\ -o\ %<\ -g
         exec "make"
         exec "cw"
     endif
