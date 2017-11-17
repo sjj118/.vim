@@ -1,8 +1,12 @@
 ## Introduction
 
-This is my configuration of vim. I will add a feature to it when I need it.
+This is my configuration of vim.
 
 ## Installation
+
+Back-up your vim configuration first.
+
+Make sure file `~/.vimrc` and directory `~/.vim` doesn't exist.
 
 Execute the following commands in Terminal:
 
@@ -12,5 +16,3 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 ln ~/.vim/vimrc ~/.vimrc
 vim +PluginInstall +qall
 ```
-
-If file `~/.vimrc` or directory `~/.vim` already exist, delete them first.
