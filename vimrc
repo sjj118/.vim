@@ -1,4 +1,3 @@
-set nocompatible
 set hidden
 set backspace=indent,eol,start
 let mapleader = "\<Space>"
@@ -14,6 +13,7 @@ Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'terryma/vim-multiple-cursors'
 Plugin 'yianwillis/vimcdoc'
 call vundle#end()
 " :PluginList       - 列出所有已配置的插件
@@ -52,11 +52,11 @@ set helplang=cn
 func Compile()
     exec "w"
     if &filetype=="cpp"
-        set makeprg=g++\ %\ -o\ %<\ -g
+        set makeprg=g++\ -std=c++11\ %\ -o\ %<
         exec "make"
         exec "cw"
     elseif &filetype=="c"
-        set makeprg=gcc\ %\ -o\ %<\ -g
+        set makeprg=gcc\ %\ -o\ %<
         exec "make"
         exec "cw"
     endif
@@ -103,3 +103,12 @@ map <C-l> <C-w>l
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
+
+""" vim-multiple-cursors
+let g:multi_cursor_use_default_mapping=0
+let g:multi_cursor_next_key='<M-n>'
+let g:multi_cursor_prev_key='<M-p>'
+let g:multi_cursor_skip_key='<leader>s'
+let g:multi_cursor_quit_key='<M-c>'
+nnoremap <C-c> :call multiple_cursors#quit()<CR>
+"let g:multi_cursor_start_key='<leader>n'
