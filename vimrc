@@ -69,8 +69,18 @@ func Run()
     endif
 endfunc
 func Debug()
+    exec "w"
+    if &filetype=="cpp"
+        set makeprg=g++\ -std=c++11\ %\ -o\ %<\ -g
+        exec "make"
+        exec "cw"
+    elseif &filetype=="c"
+        set makeprg=gcc\ %\ -o\ %<\ -g
+        exec "make"
+        exec "cw"
+    endif
     if &filetype=="cpp" || &filetype=="c"
-        exec "!gdb %<"
+        exec "!lldb %<"
     endif
 endfunc
 nmap <leader>c :call Compile()<CR>
