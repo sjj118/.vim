@@ -65,7 +65,7 @@ func Run()
     if &filetype=="cpp" || &filetype=="c"
         exec "!./%<"
     elseif &filetype=="python"
-        exec "!python3 %"
+        exec "!python %"
     endif
 endfunc
 func Debug()
