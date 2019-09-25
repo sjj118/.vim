@@ -1,6 +1,6 @@
 set hidden
 set backspace=indent,eol,start
-let mapleader = "\<Space>"
+let mapleader = "\\"
 
 """ Vundle
 filetype off
@@ -39,6 +39,7 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 set ambiwidth=double
+set cursorline
 au FileType python set textwidth=79
 au FileType scheme set tabstop=2 shiftwidth=2 softtabstop=2
 
@@ -90,18 +91,14 @@ nmap <leader>d :call Debug()<CR>
 """ NERDTree
 nnoremap <leader>t :NERDTreeToggle<CR>
 nmap <C-n> :bnext<CR>
-nmap <C-p> :bprevious<CR>
-nmap <leader>w :bp <BAR> bd #<CR>
+nmap <C-p> :bprevious<CR> nmap <leader>w :bp <BAR> bd #<CR>
 let NERDTreeShowLineNumbers=1
 let NERDTreeAutoCenter=1
 let NERDTreeWinSize=31
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 """ clipboard
-if !has('clipboard')
-    vmap "+y y:call system("pbcopy", getreg("\""))<CR>
-    nmap "+p :call setreg("\"",system("pbpaste"))<CR>p
-endif
+set clipboard^=unnamed,unnamedplus
 
 """ move between windows
 map <C-h> <C-w>h
@@ -122,3 +119,13 @@ let g:multi_cursor_skip_key='<leader>s'
 let g:multi_cursor_quit_key='<M-c>'
 nnoremap <C-c> :call multiple_cursors#quit()<CR>
 "let g:multi_cursor_start_key='<leader>n'
+"
+
+au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
+
+" customized map
+map H 0
+map L $
+noremap J L
+noremap K H
+map <C-a> ggVG
