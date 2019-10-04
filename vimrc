@@ -25,7 +25,11 @@ call vundle#end()
 """ syntax
 syntax on
 set background=dark
-colorscheme solarized
+
+try
+    colorscheme solarized
+catch
+endtry
 
 filetype plugin indent on
 au BufNewFile,BufRead *.ejs set filetype=html
