@@ -11,8 +11,7 @@ Make sure file `~/.vimrc` and directory `~/.vim` doesn't exist.
 Execute the following commands in Terminal:
 
 ```bash
-git clone https://github.com/sjj118/.vim.git ~/.vim
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-ln ~/.vim/vimrc ~/.vimrc
+git clone --depth=1 https://github.com/sjj118/.vim.git ~/.vim
+git clone --depth=1 https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
 ```
