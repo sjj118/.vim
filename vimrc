@@ -128,8 +128,10 @@ nnoremap <C-c> :call multiple_cursors#quit()<CR>
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
 
 " customized map
-map H 0
-map L $
-noremap J L
-noremap K H
-map <C-a> ggVG
+nnoremap H 0
+nnoremap L $
+nnoremap J L
+nnoremap K H
+nmap <C-a> ggVG
+vmap <C-a> vggVG
+nnoremap cj J
