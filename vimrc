@@ -1,6 +1,6 @@
 set hidden
 set backspace=indent,eol,start
-let mapleader = "\\"
+let mapleader = "\<space>"
 
 """ Vundle
 filetype off
@@ -128,10 +128,19 @@ nnoremap <C-c> :call multiple_cursors#quit()<CR>
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
 
 " customized map
-nnoremap H 0
-nnoremap L $
-nnoremap J L
-nnoremap K H
+noremap J L
+noremap K H
+map H ^
+map L $
+nmap dH d^
+nmap dL d$
+nmap cH c^
+nmap cL c$
+nmap yH y^
+nmap yL y$
 nmap <C-a> ggVG
 vmap <C-a> vggVG
 nnoremap cj J
+nnoremap ya ggyG''
+nnoremap da ggdG
+nnoremap ca ggcG
