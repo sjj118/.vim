@@ -10,6 +10,7 @@ Plugin 'VundleVim/Vundle.vim'
 "Plugin 'https://github.com/kovisoft/slimv.git'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'preservim/nerdcommenter'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'altercation/vim-colors-solarized'
@@ -34,7 +35,7 @@ endtry
 filetype plugin indent on
 au BufNewFile,BufRead *.ejs set filetype=html
 set autoindent
-set nowrap
+"set nowrap
 set nobackup
 set nu
 set rnu
@@ -44,7 +45,7 @@ set softtabstop=4
 set expandtab
 set ambiwidth=double
 set cursorline
-au FileType python set textwidth=79
+"au FileType python set textwidth=79
 au FileType scheme set tabstop=2 shiftwidth=2 softtabstop=2
 
 set langmenu=zh_CN.UTF-8
@@ -57,7 +58,7 @@ set helplang=cn
 func Compile()
     exec "w"
     if &filetype=="cpp"
-        set makeprg=g++\ -std=c++11\ %\ -o\ %<
+        set makeprg=g++\ -std=c++17\ %\ -o\ %<
         exec "make"
         exec "cw"
     elseif &filetype=="c"
@@ -100,6 +101,12 @@ let NERDTreeShowLineNumbers=1
 let NERDTreeAutoCenter=1
 let NERDTreeWinSize=31
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+""" NERDComment
+let g:NERDDefaultAlign = 'left'
+let g:NERDSpaceDelims = 1
+let g:NERDCommentEmptyLines = 1
+let g:NERDTrimTrailingWhitespace = 1
 
 """ clipboard
 set clipboard^=unnamed,unnamedplus
@@ -144,3 +151,5 @@ nnoremap cj J
 nnoremap ya ggyG''
 nnoremap da ggdG
 nnoremap ca ggcG
+nmap <C-_> <leader>c<Space>
+vmap <C-_> <leader>c<Space>
