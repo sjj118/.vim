@@ -45,6 +45,7 @@ set softtabstop=4
 set expandtab
 set ambiwidth=double
 set cursorline
+set scrolloff=5
 "au FileType python set textwidth=79
 au FileType scheme set tabstop=2 shiftwidth=2 softtabstop=2
 
