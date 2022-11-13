@@ -8,12 +8,12 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 "Plugin 'https://github.com/kovisoft/slimv.git'
+Plugin 'sonph/onehalf', { 'rtp': 'vim' }
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'preservim/nerdcommenter'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'altercation/vim-colors-solarized'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'yianwillis/vimcdoc'
 call vundle#end()
@@ -27,10 +27,8 @@ call vundle#end()
 syntax on
 set background=dark
 
-try
-    colorscheme solarized
-catch
-endtry
+colorscheme onehalfdark
+let g:airline_theme='onehalfdark'
 
 filetype plugin indent on
 au BufNewFile,BufRead *.ejs set filetype=html
